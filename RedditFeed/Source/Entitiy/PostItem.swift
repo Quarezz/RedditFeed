@@ -8,8 +8,18 @@
 
 import UIKit
 
-class PostItem: NSObject {
+class PostItem: Decodable {
 
+    // MARK: Declarations
+    
+    enum CodingKeys: String, CodingKey {
+        case author
+        case created_utc
+        case title
+        case thumbnail
+        case num_comments
+    }
+    
     // MARK: Public variables
     
     public let author: String
@@ -20,16 +30,18 @@ class PostItem: NSObject {
     
     // MARK: Initialization
     
-    init?(json: [String: Any]) {
+    required init(from decoder: Decoder) throws {
         
-        self.author = json["author"] as? String ?? ""
-        let date = json["date"] as? String ?? ""
-        self.date = date.formattedDate(format: .redditPost)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.text = json["text"] as? String ?? ""
-        self.thumbnailUrl = URL(string: json["url"] as? String ?? "")
-        self.commentsCount = json["commentsCount"] as? Int ?? 0
+        self.author = try values.decode(String.self, forKey: .author)
+        self.text = try values.decode(String.self, forKey: .title)
+        self.commentsCount = try values.decode(Int.self, forKey: .num_comments)
         
-        super.init()
+        let timestamp = try values.decode(String.self, forKey: .created_utc)
+        self.date = timestamp.formattedDate(format: .redditPost)
+        
+        let thumbnail = try values.decode(String.self, forKey: .thumbnail)
+        self.thumbnailUrl = URL(string: thumbnail)
     }
 }
