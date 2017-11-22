@@ -12,6 +12,12 @@
 		2E1FE3351FC60F9000194E42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E1FE3281FC60F9000194E42 /* LaunchScreen.storyboard */; };
 		2E1FE3361FC60F9000194E42 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E1FE32A1FC60F9000194E42 /* Feed.storyboard */; };
 		2E1FE3371FC60F9000194E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FE32E1FC60F9000194E42 /* AppDelegate.swift */; };
+		2E1FE3391FC6110800194E42 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FE3381FC6110800194E42 /* RootCoordinator.swift */; };
+		2E1FE33F1FC6117F00194E42 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FE33D1FC6117F00194E42 /* FeedViewController.swift */; };
+		2E1FE3411FC6143E00194E42 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FE3401FC6143E00194E42 /* FeedTableViewCell.swift */; };
+		2E1FE3431FC6145900194E42 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FE3421FC6145900194E42 /* PostItem.swift */; };
+		2E1FE3461FC616D000194E42 /* DateHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1FE3451FC616D000194E42 /* DateHandling.swift */; };
+		2E1FE3491FC617A900194E42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E1FE34B1FC617A900194E42 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,12 @@
 		2E1FE3291FC60F9000194E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E1FE32B1FC60F9000194E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feed.storyboard; sourceTree = "<group>"; };
 		2E1FE32E1FC60F9000194E42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2E1FE3381FC6110800194E42 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		2E1FE33D1FC6117F00194E42 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		2E1FE3401FC6143E00194E42 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		2E1FE3421FC6145900194E42 /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
+		2E1FE3451FC616D000194E42 /* DateHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandling.swift; sourceTree = "<group>"; };
+		2E1FE34A1FC617A900194E42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +108,7 @@
 				2E1FE3251FC60F9000194E42 /* Assets.xcassets */,
 				2E1FE3261FC60F9000194E42 /* Info.plist */,
 				2E1FE3271FC60F9000194E42 /* Storyboards */,
+				2E1FE34B1FC617A900194E42 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -112,6 +125,7 @@
 		2E1FE32C1FC60F9000194E42 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				2E1FE3441FC616B800194E42 /* Utills */,
 				2E1FE32D1FC60F9000194E42 /* Core */,
 				2E1FE32F1FC60F9000194E42 /* Entitiy */,
 				2E1FE3301FC60F9000194E42 /* Model */,
@@ -125,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				2E1FE32E1FC60F9000194E42 /* AppDelegate.swift */,
+				2E1FE3381FC6110800194E42 /* RootCoordinator.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -132,6 +147,7 @@
 		2E1FE32F1FC60F9000194E42 /* Entitiy */ = {
 			isa = PBXGroup;
 			children = (
+				2E1FE3421FC6145900194E42 /* PostItem.swift */,
 			);
 			path = Entitiy;
 			sourceTree = "<group>";
@@ -153,8 +169,34 @@
 		2E1FE3321FC60F9000194E42 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2E1FE33C1FC6117F00194E42 /* Feed */,
+				2E1FE33E1FC6117F00194E42 /* Image */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2E1FE33C1FC6117F00194E42 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				2E1FE33D1FC6117F00194E42 /* FeedViewController.swift */,
+				2E1FE3401FC6143E00194E42 /* FeedTableViewCell.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		2E1FE33E1FC6117F00194E42 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		2E1FE3441FC616B800194E42 /* Utills */ = {
+			isa = PBXGroup;
+			children = (
+				2E1FE3451FC616D000194E42 /* DateHandling.swift */,
+			);
+			path = Utills;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E1FE3351FC60F9000194E42 /* LaunchScreen.storyboard in Resources */,
+				2E1FE3491FC617A900194E42 /* Localizable.strings in Resources */,
 				2E1FE3331FC60F9000194E42 /* Assets.xcassets in Resources */,
 				2E1FE3361FC60F9000194E42 /* Feed.storyboard in Resources */,
 			);
@@ -260,6 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1FE3391FC6110800194E42 /* RootCoordinator.swift in Sources */,
+				2E1FE3411FC6143E00194E42 /* FeedTableViewCell.swift in Sources */,
+				2E1FE3431FC6145900194E42 /* PostItem.swift in Sources */,
+				2E1FE33F1FC6117F00194E42 /* FeedViewController.swift in Sources */,
+				2E1FE3461FC616D000194E42 /* DateHandling.swift in Sources */,
 				2E1FE3371FC60F9000194E42 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +345,14 @@
 				2E1FE32B1FC60F9000194E42 /* Base */,
 			);
 			name = Feed.storyboard;
+			sourceTree = "<group>";
+		};
+		2E1FE34B1FC617A900194E42 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E1FE34A1FC617A900194E42 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
