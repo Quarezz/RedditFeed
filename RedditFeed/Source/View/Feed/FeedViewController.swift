@@ -16,6 +16,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: IBOutlets
     
+    @IBOutlet weak var dummyActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Private variables
@@ -67,6 +68,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.model.fetchFeed(offset: 0) {[weak self] (result) in
             
+            self?.dummyActivityIndicator.stopAnimating()
             self?.tableView.refreshControl?.endRefreshing()
             
             switch result {
