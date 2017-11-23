@@ -9,3 +9,5 @@
 "common.ok"="Ok";
 "feed.post.comments"="Comments: ";
 "image.loading.error"="Unable to load image";
+"image.save.error.access"="Unable to access gallery, please check permissions";
+"image.save.success"="Image stored in gallery";

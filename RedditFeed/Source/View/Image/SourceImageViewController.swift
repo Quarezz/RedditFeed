@@ -32,7 +32,7 @@ class SourceImageViewController: UIViewController {
             self?.imageView.image = image
             
             if image == nil {
-                self?.showError(message: NSLocalizedString("image.loading.error", comment: ""))
+                self?.showAlert(message: NSLocalizedString("image.loading.error", comment: ""))
             }
             else {
                 self?.saveButton.isEnabled = true
@@ -42,7 +42,7 @@ class SourceImageViewController: UIViewController {
     
     // MARK: Private methods
     
-    private func showError(message: String) {
+    private func showAlert(message: String) {
         
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("common.ok", comment: ""), style: .cancel, handler: nil))
@@ -52,7 +52,6 @@ class SourceImageViewController: UIViewController {
     // MARK: IBActions
     
     @IBAction func tappedBack(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -65,7 +64,10 @@ class SourceImageViewController: UIViewController {
         self.model?.saveImageToGallery(image: image, completion: {[weak self] (error) in
             
             if let error = error {
-                self?.showError(message: error)
+                self?.showAlert(message: error)
+            }
+            else {
+                self?.showAlert(message: NSLocalizedString("image.save.success", comment: ""))
             }
         })
     }
