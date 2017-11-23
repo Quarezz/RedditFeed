@@ -29,6 +29,8 @@
 		2E9500ED1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500EC1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift */; };
 		2E9500EF1FC7656300B7CBF6 /* SourceImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500EE1FC7656300B7CBF6 /* SourceImageViewController.swift */; };
 		2E9500F11FC768A700B7CBF6 /* SourceImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500F01FC768A700B7CBF6 /* SourceImageModel.swift */; };
+		2EB7B6031FC772C000CBAF68 /* SourceImageModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7B6021FC772C000CBAF68 /* SourceImageModelTests.swift */; };
+		2EB7B6051FC7770600CBAF68 /* mock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB7B6041FC7770600CBAF68 /* mock.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		2E9500EC1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageTableViewCell.swift; sourceTree = "<group>"; };
 		2E9500EE1FC7656300B7CBF6 /* SourceImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceImageViewController.swift; sourceTree = "<group>"; };
 		2E9500F01FC768A700B7CBF6 /* SourceImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceImageModel.swift; sourceTree = "<group>"; };
+		2EB7B6021FC772C000CBAF68 /* SourceImageModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceImageModelTests.swift; sourceTree = "<group>"; };
+		2EB7B6041FC7770600CBAF68 /* mock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mock.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +122,12 @@
 		2E1FE3181FC60F0A00194E42 /* RedditFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				2EB7B6041FC7770600CBAF68 /* mock.png */,
 				2E1FE31B1FC60F0A00194E42 /* Info.plist */,
 				2E1FE34C1FC619FD00194E42 /* RootCoordinatorTests.swift */,
 				2E9500E01FC6201C00B7CBF6 /* FeedServiceTests.swift */,
 				2E9500E21FC6202B00B7CBF6 /* FeedModelTests.swift */,
+				2EB7B6021FC772C000CBAF68 /* SourceImageModelTests.swift */,
 			);
 			path = RedditFeedTests;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EB7B6051FC7770600CBAF68 /* mock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +367,7 @@
 			files = (
 				2E1FE34D1FC619FD00194E42 /* RootCoordinatorTests.swift in Sources */,
 				2E9500E11FC6201C00B7CBF6 /* FeedServiceTests.swift in Sources */,
+				2EB7B6031FC772C000CBAF68 /* SourceImageModelTests.swift in Sources */,
 				2E9500E31FC6202B00B7CBF6 /* FeedModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

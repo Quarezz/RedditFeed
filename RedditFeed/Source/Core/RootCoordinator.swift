@@ -14,7 +14,7 @@ fileprivate let kImageVcName = "SourceImageViewController"
 
 protocol FeedViewOutput: class {
     
-    func navigateToImage(imageUrl: URL)
+    func navigateToImage(imageUrl: URL, animated: Bool, completion: (()->Void)?)
 }
 
 class RootCoordinator: NSObject, FeedViewOutput {
@@ -36,7 +36,7 @@ class RootCoordinator: NSObject, FeedViewOutput {
     
     // MARK: FeedViewOutput
     
-    func navigateToImage(imageUrl: URL) {
+    func navigateToImage(imageUrl: URL, animated: Bool, completion: (()->Void)?) {
         
         let imageVc = self.storyboard.instantiateViewController(withIdentifier: kImageVcName) as! SourceImageViewController
         imageVc.model = SourceImageModel(imageUrl: imageUrl)
@@ -44,6 +44,6 @@ class RootCoordinator: NSObject, FeedViewOutput {
         let navigationController = UINavigationController(rootViewController: imageVc)
         navigationController.modalTransitionStyle = .crossDissolve
         
-        self.rootNavigationController.present(navigationController, animated: true, completion: nil)
+        self.rootNavigationController.present(navigationController, animated: animated, completion: completion)
     }
 }

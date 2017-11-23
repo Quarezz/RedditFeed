@@ -20,4 +20,23 @@ class RootCoordinatorTests: XCTestCase {
         XCTAssertNotNil(navigationVc)
         XCTAssertEqual(navigationVc?.viewControllers.isEmpty, false, "Root Navigation stack can't be empty")
     }
+    
+    func testImageSourceNavigation() {
+        
+        let rootCoordinator = RootCoordinator()
+        let navigationVc = rootCoordinator.initialViewController()
+        let window = UIWindow()
+        window.rootViewController = navigationVc
+        window.makeKeyAndVisible()
+        
+        let url = URL(string: "google.com")!
+        
+        let expectation = self.expectation(description: "imagePresentation")
+        rootCoordinator.navigateToImage(imageUrl: url, animated: false, completion: {
+            
+            XCTAssertNotNil(navigationVc?.presentedViewController)
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 }

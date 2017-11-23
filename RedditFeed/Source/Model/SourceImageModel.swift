@@ -13,22 +13,18 @@ class SourceImageModel: NSObject {
 
     // MARK: Private variables
 
+    // Additional apiClient or imageService(cache+network) can go here
     private let loadSession: URLSession
+    
     private let imageUrl: URL
-    private let photoLibraryClass: PHPhotoLibrary.Type
-    private let assetChangeRequestClass: PHAssetChangeRequest.Type
     
     // MARK: Initialization
     
     init(imageUrl: URL,
-         loadSession: URLSession = URLSession.shared,
-         photosLib: PHPhotoLibrary.Type = PHPhotoLibrary.self,
-         assetChangeRequestClass: PHAssetChangeRequest.Type = PHAssetChangeRequest.self) {
+         loadSession: URLSession = URLSession.shared) {
         
         self.imageUrl = imageUrl
         self.loadSession = loadSession
-        self.photoLibraryClass = photosLib
-        self.assetChangeRequestClass = assetChangeRequestClass
     }
     
     // MARK: Public methods
@@ -44,7 +40,7 @@ class SourceImageModel: NSObject {
                     completion(nil)
                 }
             }
-            if let data = data, let image = UIImage(data: data) {
+            else if let data = data, let image = UIImage(data: data) {
                 
                 DispatchQueue.main.async {
                     completion(image)
@@ -61,14 +57,14 @@ class SourceImageModel: NSObject {
     
     public func saveImageToGallery(image: UIImage, completion: @escaping (_ error: String?)->Void) {
         
-        self.photoLibraryClass.requestAuthorization {[weak self] (status) in
+        PHPhotoLibrary.requestAuthorization { (status) in
             
             switch status {
             case .authorized:
                 
-                self?.photoLibraryClass.shared().performChanges({
+                PHPhotoLibrary.shared().performChanges({
                     
-                    self?.assetChangeRequestClass.creationRequestForAsset(from: image)
+                    PHAssetChangeRequest.creationRequestForAsset(from: image)
                     
                 }, completionHandler: { (result, error) in
                     
