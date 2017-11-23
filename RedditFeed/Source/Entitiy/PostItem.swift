@@ -8,17 +8,7 @@
 
 import UIKit
 
-class PostItem: Decodable {
-
-    // MARK: Declarations
-    
-    enum CodingKeys: String, CodingKey {
-        case author
-        case created_utc
-        case title
-        case thumbnail
-        case num_comments
-    }
+struct PostItem {
     
     // MARK: Public variables
     
@@ -26,22 +16,29 @@ class PostItem: Decodable {
     public let date: String
     public let text: String
     public let thumbnailUrl: URL?
-    public let commentsCount: Int
+    public let commentsCount: Int?
     
     // MARK: Initialization
     
-    required init(from decoder: Decoder) throws {
+    init?(json: [String: Any]) {
         
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        guard let author = json["author"] as? String            else { return nil }
+        guard let text = json["title"] as? String               else { return nil }
         
-        self.author = try values.decode(String.self, forKey: .author)
-        self.text = try values.decode(String.self, forKey: .title)
-        self.commentsCount = try values.decode(Int.self, forKey: .num_comments)
+        self.author = author
+        self.text = text
         
-        let timestamp = try values.decode(String.self, forKey: .created_utc)
+        let timestamp = json["created_utc"] as? String ?? ""
         self.date = timestamp.formattedDate(format: .redditPost)
         
-        let thumbnail = try values.decode(String.self, forKey: .thumbnail)
-        self.thumbnailUrl = URL(string: thumbnail)
+        let thumbnail = URL(string: json["thumbnail"] as? String ?? "")
+        if thumbnail?.host != nil {
+            self.thumbnailUrl = thumbnail
+        }
+        else {
+            self.thumbnailUrl = nil
+        }
+        
+        self.commentsCount = json["num_comments"] as? Int
     }
 }

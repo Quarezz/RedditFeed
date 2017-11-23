@@ -43,7 +43,8 @@ class FeedTableViewCell: UITableViewCell {
         self.authorLabel.text = data.author
         self.dateLabel.text = data.date
         self.postTitleLabel.text = data.text
-        self.commentsLabel.text = NSLocalizedString("feed.post.comments", comment: "") + " \(data.commentsCount)"
+        self.commentsLabel.text = NSLocalizedString("feed.post.comments", comment: "") + " \(data.commentsCount ?? 0)"
+        self.thumbnailImageView.isHighlighted = (data.thumbnailUrl == nil)
     }
     
     public func updateThumbnail(image: UIImage) {

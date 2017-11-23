@@ -25,6 +25,8 @@
 		2E9500E11FC6201C00B7CBF6 /* FeedServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500E01FC6201C00B7CBF6 /* FeedServiceTests.swift */; };
 		2E9500E31FC6202B00B7CBF6 /* FeedModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500E21FC6202B00B7CBF6 /* FeedModelTests.swift */; };
 		2E9500E71FC6315800B7CBF6 /* RedditResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500E61FC6315800B7CBF6 /* RedditResponseParser.swift */; };
+		2E9500E91FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500E81FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift */; };
+		2E9500ED1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500EC1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		2E9500E01FC6201C00B7CBF6 /* FeedServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedServiceTests.swift; sourceTree = "<group>"; };
 		2E9500E21FC6202B00B7CBF6 /* FeedModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelTests.swift; sourceTree = "<group>"; };
 		2E9500E61FC6315800B7CBF6 /* RedditResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditResponseParser.swift; sourceTree = "<group>"; };
+		2E9500E81FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoadMoreFooter.swift; sourceTree = "<group>"; };
+		2E9500EC1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 			children = (
 				2E1FE33D1FC6117F00194E42 /* FeedViewController.swift */,
 				2E1FE3401FC6143E00194E42 /* FeedTableViewCell.swift */,
+				2E9500E81FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift */,
+				2E9500EC1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -329,9 +335,11 @@
 				2E9500DD1FC61E3400B7CBF6 /* RedditApiClient.swift in Sources */,
 				2E1FE3411FC6143E00194E42 /* FeedTableViewCell.swift in Sources */,
 				2E1FE3431FC6145900194E42 /* PostItem.swift in Sources */,
+				2E9500E91FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift in Sources */,
 				2E9500DB1FC61E2900B7CBF6 /* RedditFeedService.swift in Sources */,
 				2E9500E71FC6315800B7CBF6 /* RedditResponseParser.swift in Sources */,
 				2E1FE33F1FC6117F00194E42 /* FeedViewController.swift in Sources */,
+				2E9500ED1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift in Sources */,
 				2E1FE34F1FC61D4A00194E42 /* FeedModel.swift in Sources */,
 				2E1FE3461FC616D000194E42 /* DateHandling.swift in Sources */,
 				2E1FE3371FC60F9000194E42 /* AppDelegate.swift in Sources */,

@@ -24,7 +24,7 @@ class RedditApiClient: NSObject {
     
     public func loadPosts(withOffset offset: Int, limit: Int, completion: @escaping (RedditApiResult) -> Void) {
         
-        var authUrlString = kRedditApiUrl + "/limit=\(limit)&count=\(offset)"
+        var authUrlString = kRedditApiUrl + "?limit=\(limit)&count=\(offset)"
         authUrlString = authUrlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
         URLSession.shared.dataTask(with: URL(string: authUrlString)!) { (data, _, error) in
