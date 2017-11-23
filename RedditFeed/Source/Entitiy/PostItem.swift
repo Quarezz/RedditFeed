@@ -17,6 +17,7 @@ struct PostItem {
     public let text: String
     public let thumbnailUrl: URL?
     public let commentsCount: Int?
+    public let sourceImageUrl: URL?
     
     // MARK: Initialization
     
@@ -37,6 +38,17 @@ struct PostItem {
         }
         else {
             self.thumbnailUrl = nil
+        }
+        
+        if let preview = json["preview"] as? [String: Any],
+            let images = preview["images"] as? [[String: Any]],
+            let source = images.first?["source"] as? [String: Any],
+            let url = source["url"] as? String {
+            
+            self.sourceImageUrl = URL(string: url)
+        }
+        else {
+            self.sourceImageUrl = nil
         }
         
         self.commentsCount = json["num_comments"] as? Int

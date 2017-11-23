@@ -8,3 +8,4 @@
 
 "common.ok"="Ok";
 "feed.post.comments"="Comments: ";
+"image.loading.error"="Unable to load image";

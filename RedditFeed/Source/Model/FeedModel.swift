@@ -37,11 +37,14 @@ class FeedModel: NSObject {
         
         self.imagesLoadingQueue.cancelAllOperations()
         self.imagesAwaitCallback = nil
+        self.imageCacheService.removeAll()
     }
     
     // MARK: Public methods
     
     public func fetchFeed(offset: Int, completion: @escaping FeedCompletion) {
+        
+        self.imageCacheService.removeAll()
         self.feedService.fetchFeed(limit: kFeedPageLimit, count: offset, result: { (result) in
             
             DispatchQueue.main.async {
@@ -61,7 +64,7 @@ class FeedModel: NSObject {
         }
         else {
             
-            self.imagesLoadingQueue.addOperation {
+            self.imagesLoadingQueue.addOperation { [weak self] in
                 
                 URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
                     
@@ -71,10 +74,11 @@ class FeedModel: NSObject {
                     }
                     
                     if let data = data, let image = UIImage(data: data) {
-                        self.imageCacheService[url.absoluteString] = image
+                        
+                        self?.imageCacheService[url.absoluteString] = image
                         
                         DispatchQueue.main.async {
-                            self.imagesAwaitCallback?(url, image)
+                            self?.imagesAwaitCallback?(url, image)
                         }
                     }
                 }).resume()

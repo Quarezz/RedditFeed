@@ -19,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="HAo-1K-9tC">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedTableViewCell" rowHeight="125" id="vlH-Zr-t7G" customClass="FeedTableViewCell" customModule="RedditFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="125"/>
@@ -115,8 +115,70 @@
             </objects>
             <point key="canvasLocation" x="-31.199999999999999" y="132.68365817091455"/>
         </scene>
+        <!--Image-->
+        <scene sceneID="CfJ-NC-DxT">
+            <objects>
+                <viewController storyboardIdentifier="SourceImageViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mgf-03-jP8" customClass="SourceImageViewController" customModule="RedditFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PK2-c5-3kP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9o-aE-Vzb">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xWb-ku-iM7"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem enabled="NO" title="Save image" id="3s8-Zu-DIc">
+                                        <connections>
+                                            <action selector="tappedSaveImage:" destination="Mgf-03-jP8" id="jiC-a7-id1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7xF-h7-UnR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cT0-Vr-bwK">
+                                <rect key="frame" x="169" y="325" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oPF-tl-BJF" firstAttribute="trailing" secondItem="7xF-h7-UnR" secondAttribute="trailing" id="8WL-yX-nXJ"/>
+                            <constraint firstItem="7xF-h7-UnR" firstAttribute="leading" secondItem="oPF-tl-BJF" secondAttribute="leading" id="C2U-fg-Ukt"/>
+                            <constraint firstItem="7xF-h7-UnR" firstAttribute="top" secondItem="oPF-tl-BJF" secondAttribute="top" id="KhK-qI-ASb"/>
+                            <constraint firstItem="z9o-aE-Vzb" firstAttribute="trailing" secondItem="oPF-tl-BJF" secondAttribute="trailing" id="M06-NG-JcE"/>
+                            <constraint firstItem="cT0-Vr-bwK" firstAttribute="centerX" secondItem="7xF-h7-UnR" secondAttribute="centerX" id="OTv-xX-Sz3"/>
+                            <constraint firstItem="cT0-Vr-bwK" firstAttribute="centerY" secondItem="7xF-h7-UnR" secondAttribute="centerY" id="TFD-5w-h0y"/>
+                            <constraint firstItem="z9o-aE-Vzb" firstAttribute="top" secondItem="7xF-h7-UnR" secondAttribute="bottom" id="Y2p-8k-Z66"/>
+                            <constraint firstItem="z9o-aE-Vzb" firstAttribute="bottom" secondItem="oPF-tl-BJF" secondAttribute="bottom" id="lhi-ns-tEZ"/>
+                            <constraint firstItem="z9o-aE-Vzb" firstAttribute="leading" secondItem="oPF-tl-BJF" secondAttribute="leading" id="mqs-BI-v4X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oPF-tl-BJF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Image" id="0PH-RB-xxd">
+                        <barButtonItem key="leftBarButtonItem" image="close" id="AC3-Fv-dw9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="tappedBack:" destination="Mgf-03-jP8" id="cHA-Gc-sX3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="cT0-Vr-bwK" id="KQ6-X1-Z6b"/>
+                        <outlet property="imageView" destination="7xF-h7-UnR" id="WFu-mu-lTy"/>
+                        <outlet property="saveButton" destination="3s8-Zu-DIc" id="CUo-rh-EfF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="esZ-qd-2NX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="133"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="close" width="20" height="19"/>
         <image name="placeholder" width="333" height="222"/>
     </resources>
 </document>

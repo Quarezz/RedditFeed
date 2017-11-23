@@ -8,8 +8,12 @@
 
 import UIKit
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FeedTableViewCellDelegate {
 
+    // MARK: Public variables
+    
+    public weak var output: FeedViewOutput?
+    
     // MARK: IBOutlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,15 +37,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewDidAppear(animated)
         
-        self.model.awaitForImageUpdates(callback: {[weak self] (url, image) in
+        if self.feed.isEmpty {
             
-            guard let strongSelf = self else { return }
-            guard let index = strongSelf.feed.index(where: {$0.thumbnailUrl == url}) else { return }
-            guard let indexPath = strongSelf.tableView.indexPathsForVisibleRows?.filter({$0.row == index}).first else { return }
-            guard let cell = strongSelf.tableView.cellForRow(at: indexPath) as? FeedTableViewCell else { return }
-            cell.updateThumbnail(image: image)
-        })
-        self.refreshFeed()
+            self.model.awaitForImageUpdates(callback: {[weak self] (url, image) in
+                
+                guard let strongSelf = self else { return }
+                guard let index = strongSelf.feed.index(where: {$0.thumbnailUrl == url}) else { return }
+                guard let indexPath = strongSelf.tableView.indexPathsForVisibleRows?.filter({$0.row == index}).first else { return }
+                guard let cell = strongSelf.tableView.cellForRow(at: indexPath) as? FeedTableViewCell else { return }
+                cell.updateThumbnail(image: image)
+            })
+            self.refreshFeed()
+        }
     }
     
     // MARK: Private methods
@@ -92,7 +99,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 break
             }
         }
-        // load more
     }
     
     private func showError(message: String) {
@@ -132,6 +138,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return self.feed.count
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         if self.feed.isEmpty == false && self.loadMoreAvailable {
@@ -163,6 +173,30 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         cell.setData(self.feed[indexPath.row])
+        cell.delegate = self
         return cell
+    }
+    
+    // MARK: FeedTableViewCellDelegate
+    
+    func feedCellThumbnailTapped(cell: FeedTableViewCell) {
+        
+        guard let indexPath = self.tableView.indexPath(for: cell) else {
+            return
+        }
+        
+        guard let imageUrl = self.feed[indexPath.row].sourceImageUrl else {
+            return
+        }
+        
+        self.output?.navigateToImage(imageUrl: imageUrl)
+    }
+    
+    // MARK: Orientation
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        super.viewWillTransition(to: size, with: coordinator)
+        self.tableView.reloadData()
     }
 }

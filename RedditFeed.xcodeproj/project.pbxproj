@@ -27,6 +27,8 @@
 		2E9500E71FC6315800B7CBF6 /* RedditResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500E61FC6315800B7CBF6 /* RedditResponseParser.swift */; };
 		2E9500E91FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500E81FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift */; };
 		2E9500ED1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500EC1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift */; };
+		2E9500EF1FC7656300B7CBF6 /* SourceImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500EE1FC7656300B7CBF6 /* SourceImageViewController.swift */; };
+		2E9500F11FC768A700B7CBF6 /* SourceImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500F01FC768A700B7CBF6 /* SourceImageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		2E9500E61FC6315800B7CBF6 /* RedditResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditResponseParser.swift; sourceTree = "<group>"; };
 		2E9500E81FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoadMoreFooter.swift; sourceTree = "<group>"; };
 		2E9500EC1FC75AF800B7CBF6 /* FeedImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageTableViewCell.swift; sourceTree = "<group>"; };
+		2E9500EE1FC7656300B7CBF6 /* SourceImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceImageViewController.swift; sourceTree = "<group>"; };
+		2E9500F01FC768A700B7CBF6 /* SourceImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				2E1FE34E1FC61D4A00194E42 /* FeedModel.swift */,
+				2E9500F01FC768A700B7CBF6 /* SourceImageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 		2E1FE33E1FC6117F00194E42 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				2E9500EE1FC7656300B7CBF6 /* SourceImageViewController.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -333,9 +339,11 @@
 				2E9500DF1FC61E6700B7CBF6 /* RedditFeedServiceInterface.swift in Sources */,
 				2E1FE3391FC6110800194E42 /* RootCoordinator.swift in Sources */,
 				2E9500DD1FC61E3400B7CBF6 /* RedditApiClient.swift in Sources */,
+				2E9500EF1FC7656300B7CBF6 /* SourceImageViewController.swift in Sources */,
 				2E1FE3411FC6143E00194E42 /* FeedTableViewCell.swift in Sources */,
 				2E1FE3431FC6145900194E42 /* PostItem.swift in Sources */,
 				2E9500E91FC7458D00B7CBF6 /* FeedLoadMoreFooter.swift in Sources */,
+				2E9500F11FC768A700B7CBF6 /* SourceImageModel.swift in Sources */,
 				2E9500DB1FC61E2900B7CBF6 /* RedditFeedService.swift in Sources */,
 				2E9500E71FC6315800B7CBF6 /* RedditResponseParser.swift in Sources */,
 				2E1FE33F1FC6117F00194E42 /* FeedViewController.swift in Sources */,
