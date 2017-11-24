@@ -8,19 +8,30 @@
 
 import Foundation
 
-public enum DateFormats: String {
-    case redditPost = ""
+public enum DateFormats {
+    case redditPost
 }
 
-extension String {
+extension Int {
     
     public func formattedDate(format: DateFormats) -> String {
         
         switch format {
         case .redditPost:
             
-            let formatter = DateFormatter()
-            return formatter.string(from: Date())
+            let date = Date(timeIntervalSince1970: TimeInterval(self))
+            let components = Calendar.current.dateComponents([.hour,.minute,.second], from: date, to: Date())
+            
+            if let hours = components.hour, hours > 0 {
+                return "\(hours) hours ago"
+            }
+            if let minutes = components.minute, minutes > 0 {
+                return "\(minutes) minutes ago"
+            }
+            if let seconds = components.second, seconds > 0 {
+                return "\(seconds) seconds ago"
+            }
+            return ""
         }
     }
 }

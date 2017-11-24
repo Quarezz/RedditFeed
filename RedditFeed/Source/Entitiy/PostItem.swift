@@ -29,8 +29,12 @@ struct PostItem {
         self.author = author
         self.text = text
         
-        let timestamp = json["created_utc"] as? String ?? ""
-        self.date = timestamp.formattedDate(format: .redditPost)
+        if let timestamp = json["created_utc"] as? Int {
+            self.date = timestamp.formattedDate(format: .redditPost)
+        }
+        else {
+            self.date = ""
+        }
         
         let thumbnail = URL(string: json["thumbnail"] as? String ?? "")
         if thumbnail?.host != nil {
