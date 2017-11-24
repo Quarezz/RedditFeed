@@ -31,12 +31,7 @@ class RootCoordinatorTests: XCTestCase {
         
         let url = URL(string: "google.com")!
         
-        let expectation = self.expectation(description: "imagePresentation")
-        rootCoordinator.navigateToImage(imageUrl: url, animated: false, completion: {
-            
-            XCTAssertNotNil(navigationVc?.presentedViewController)
-            expectation.fulfill()
-        })
-        waitForExpectations(timeout: 5, handler: nil)
+        rootCoordinator.navigateToImage(imageUrl: url, animated: false)
+        XCTAssertEqual(navigationVc?.viewControllers.count, 2)
     }
 }

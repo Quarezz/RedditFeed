@@ -31,6 +31,7 @@
 		2E9500F11FC768A700B7CBF6 /* SourceImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9500F01FC768A700B7CBF6 /* SourceImageModel.swift */; };
 		2EB7B6031FC772C000CBAF68 /* SourceImageModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7B6021FC772C000CBAF68 /* SourceImageModelTests.swift */; };
 		2EB7B6051FC7770600CBAF68 /* mock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB7B6041FC7770600CBAF68 /* mock.png */; };
+		2EB7B6071FC7925400CBAF68 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7B6061FC7925400CBAF68 /* RootNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		2E9500F01FC768A700B7CBF6 /* SourceImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceImageModel.swift; sourceTree = "<group>"; };
 		2EB7B6021FC772C000CBAF68 /* SourceImageModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceImageModelTests.swift; sourceTree = "<group>"; };
 		2EB7B6041FC7770600CBAF68 /* mock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mock.png; sourceTree = "<group>"; };
+		2EB7B6061FC7925400CBAF68 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			children = (
 				2E1FE33C1FC6117F00194E42 /* Feed */,
 				2E1FE33E1FC6117F00194E42 /* Image */,
+				2EB7B6061FC7925400CBAF68 /* RootNavigationController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E9500DF1FC61E6700B7CBF6 /* RedditFeedServiceInterface.swift in Sources */,
+				2EB7B6071FC7925400CBAF68 /* RootNavigationController.swift in Sources */,
 				2E1FE3391FC6110800194E42 /* RootCoordinator.swift in Sources */,
 				2E9500DD1FC61E3400B7CBF6 /* RedditApiClient.swift in Sources */,
 				2E9500EF1FC7656300B7CBF6 /* SourceImageViewController.swift in Sources */,

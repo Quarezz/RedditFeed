@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class SourceImageModel: NSObject {
+class SourceImageModel: NSObject, NSCoding {
 
     // MARK: Private variables
 
@@ -25,6 +25,20 @@ class SourceImageModel: NSObject {
         
         self.imageUrl = imageUrl
         self.loadSession = loadSession
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        guard let url = URL(string: aDecoder.decodeObject(forKey: "imagemodel.url") as? String ?? "") else {
+            return nil
+        }
+        self.imageUrl = url
+        self.loadSession = URLSession.shared
+        super.init()
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.imageUrl.absoluteString, forKey: "imagemodel.url")
     }
     
     // MARK: Public methods

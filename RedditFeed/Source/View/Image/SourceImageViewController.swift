@@ -21,10 +21,16 @@ class SourceImageViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // MARK: Overriden
-    
+
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        self.fetchImage()
+    }
+    
+    // MARK: Private methods
+    
+    private func fetchImage() {
         
         self.model?.fetchImage(completion: {[weak self] (image) in
             
@@ -39,8 +45,6 @@ class SourceImageViewController: UIViewController {
             }
         })
     }
-    
-    // MARK: Private methods
     
     private func showAlert(message: String) {
         
@@ -70,5 +74,26 @@ class SourceImageViewController: UIViewController {
                 self?.showAlert(message: NSLocalizedString("image.save.success", comment: ""))
             }
         })
+    }
+    
+    // MARK: Restoration
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        
+        coder.encode(self.model, forKey: "imagevc.model")
+        super.encodeRestorableState(with: coder)
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        
+        self.model = coder.decodeObject(forKey: "imagevc.model") as? SourceImageModel
+        super.decodeRestorableState(with: coder)
+    }
+    
+    override func applicationFinishedRestoringState() {
+        
+        super.applicationFinishedRestoringState()
+        
+        self.fetchImage()
     }
 }

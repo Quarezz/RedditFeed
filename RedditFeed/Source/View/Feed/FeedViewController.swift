@@ -191,7 +191,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
         
-        self.output?.navigateToImage(imageUrl: imageUrl, animated: true, completion: nil)
+        self.output?.navigateToImage(imageUrl: imageUrl, animated: true)
     }
     
     // MARK: Orientation

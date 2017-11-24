@@ -21,17 +21,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: UIApplicationDelegate
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+       
         if (NSClassFromString("XCTest") != nil) {
             return true
         }
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = self.flowCoordinator.initialViewController()
-        self.window?.makeKeyAndVisible()
+        if (self.window == nil) {
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = self.flowCoordinator.initialViewController()
+            self.window?.makeKeyAndVisible()
+        }
         
         return true
+    }
+    
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+        return true
+    }
+    
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+        return true
+    }
+    
+    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
+        
+        guard let identifiers = identifierComponents as? [String] else {
+            return nil
+        }
+        
+        if let storyboard = coder.decodeObject(forKey: UIStateRestorationViewControllerStoryboardKey) as? UIStoryboard {
+            return self.flowCoordinator.restorationViewController(restorationIds: identifiers, fromStoryboard: storyboard)
+        }
+        return nil
     }
 }
 

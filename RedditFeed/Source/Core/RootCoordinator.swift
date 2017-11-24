@@ -9,41 +9,69 @@
 import UIKit
 
 fileprivate let kStoryboardName = "Feed"
+fileprivate let kRootNavigationName = "RootNavigationController"
 fileprivate let kFeedVcName = "FeedViewController"
 fileprivate let kImageVcName = "SourceImageViewController"
 
 protocol FeedViewOutput: class {
     
-    func navigateToImage(imageUrl: URL, animated: Bool, completion: (()->Void)?)
+    func navigateToImage(imageUrl: URL, animated: Bool)
 }
 
 class RootCoordinator: NSObject, FeedViewOutput {
     
     // MARK: Private variables
     
-    private let storyboard = UIStoryboard(name: kStoryboardName, bundle: nil)
-    private let rootNavigationController = UINavigationController()
+    private var storyboard = UIStoryboard(name: kStoryboardName, bundle: nil)
+    private var rootNavigationController: RootNavigationController?
     
     // MARK: Public methods
     
-    public func initialViewController() -> UINavigationController? {
+    public func initialViewController() -> RootNavigationController? {
         
-        let feedVc = self.storyboard.instantiateViewController(withIdentifier: kFeedVcName) as! FeedViewController
+        if self.rootNavigationController != nil {
+            return self.rootNavigationController
+        }
+        
+        self.rootNavigationController = self.storyboard.instantiateViewController(withIdentifier: kRootNavigationName) as? RootNavigationController
+        let feedVc = self.rootNavigationController?.viewControllers.first as! FeedViewController
         feedVc.output = self
-        self.rootNavigationController.viewControllers = [feedVc]
+        
         return self.rootNavigationController
+    }
+    
+    public func restorationViewController(restorationIds: [String], fromStoryboard: UIStoryboard) -> UIViewController? {
+        
+        self.storyboard = fromStoryboard
+        
+        // Restoration stack count could be 2
+        if restorationIds.count > 1 {
+            
+            switch restorationIds.last! {
+                
+            case kFeedVcName:
+                
+                let feed = self.storyboard.instantiateViewController(withIdentifier: kFeedVcName) as? FeedViewController
+                feed?.output = self
+                return feed
+            case kImageVcName:
+                
+                let image = self.storyboard.instantiateViewController(withIdentifier: kImageVcName)
+                return image
+            default:
+                return nil
+            }
+        }
+        return nil
     }
     
     // MARK: FeedViewOutput
     
-    func navigateToImage(imageUrl: URL, animated: Bool, completion: (()->Void)?) {
+    func navigateToImage(imageUrl: URL, animated: Bool) {
         
         let imageVc = self.storyboard.instantiateViewController(withIdentifier: kImageVcName) as! SourceImageViewController
         imageVc.model = SourceImageModel(imageUrl: imageUrl)
         
-        let navigationController = UINavigationController(rootViewController: imageVc)
-        navigationController.modalTransitionStyle = .crossDissolve
-        
-        self.rootNavigationController.present(navigationController, animated: animated, completion: completion)
+        self.rootNavigationController?.pushViewController(imageVc, animated: animated)
     }
 }
