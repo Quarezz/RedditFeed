@@ -27,6 +27,8 @@ class SourceImageModel: NSObject, NSCoding {
         self.loadSession = loadSession
     }
     
+    // MARK: NSCoding
+    
     required init?(coder aDecoder: NSCoder) {
         
         guard let url = URL(string: aDecoder.decodeObject(forKey: "imagemodel.url") as? String ?? "") else {

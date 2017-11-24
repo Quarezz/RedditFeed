@@ -27,15 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
-        if (self.window == nil) {
-            
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = self.flowCoordinator.initialViewController()
-            self.window?.makeKeyAndVisible()
-        }
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = self.flowCoordinator.initialViewController()
+        self.window?.makeKeyAndVisible()
         
         return true
     }
+    
+    // MARK: Restoration
     
     func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
         return true

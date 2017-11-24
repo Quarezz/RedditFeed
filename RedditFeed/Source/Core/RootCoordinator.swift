@@ -34,7 +34,9 @@ class RootCoordinator: NSObject, FeedViewOutput {
         }
         
         self.rootNavigationController = self.storyboard.instantiateViewController(withIdentifier: kRootNavigationName) as? RootNavigationController
-        let feedVc = self.rootNavigationController?.viewControllers.first as! FeedViewController
+        guard let feedVc = self.rootNavigationController?.viewControllers.first as? FeedViewController else {
+            fatalError("Root navigation stack corrupted")
+        }
         feedVc.output = self
         
         return self.rootNavigationController
@@ -69,7 +71,9 @@ class RootCoordinator: NSObject, FeedViewOutput {
     
     func navigateToImage(imageUrl: URL, animated: Bool) {
         
-        let imageVc = self.storyboard.instantiateViewController(withIdentifier: kImageVcName) as! SourceImageViewController
+        guard let imageVc = self.storyboard.instantiateViewController(withIdentifier: kImageVcName) as? SourceImageViewController else {
+            fatalError("Unable to retreive SourceImageViewController")
+        }
         imageVc.model = SourceImageModel(imageUrl: imageUrl)
         
         self.rootNavigationController?.pushViewController(imageVc, animated: animated)

@@ -93,7 +93,6 @@ class SourceImageViewController: UIViewController {
     override func applicationFinishedRestoringState() {
         
         super.applicationFinishedRestoringState()
-        
         self.fetchImage()
     }
 }
