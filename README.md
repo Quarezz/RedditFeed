@@ -2,7 +2,7 @@
 App build using Xcode9.0.1 
 
 # Task
-Task.pdf
+[Task.pdf](https://github.com/Quarezz/RedditFeed/blob/master/Task.pdf)
 
 ## Notes:
 * Architecture
