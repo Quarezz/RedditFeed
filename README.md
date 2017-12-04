@@ -1,6 +1,9 @@
 # RedditFeed
 App build using Xcode9.0.1 
 
+# Task
+Task.pdf
+
 ## Notes:
 * Architecture
 
